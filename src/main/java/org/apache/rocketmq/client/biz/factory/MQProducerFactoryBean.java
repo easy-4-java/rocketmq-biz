@@ -1,10 +1,7 @@
 package org.apache.rocketmq.client.biz.factory;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.rocketmq.client.producer.DefaultMQProducer;
-import org.apache.rocketmq.client.producer.MQProducer;
-import org.apache.rocketmq.client.producer.TransactionCheckListener;
-import org.apache.rocketmq.client.producer.TransactionMQProducer;
+import org.apache.rocketmq.client.producer.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.FactoryBean;
@@ -23,14 +20,17 @@ public class MQProducerFactoryBean implements FactoryBean<MQProducer>, Initializ
 	/**
 	 * 客户端配置对象：必须存在
 	 */
-	private ProducerConfig config;
-	private TransactionCheckListener transactionCheckListener;
+	@Getter
+    private ProducerConfig config;
+	@Getter
+	@Setter
+	private TransactionListener transactionListener;
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
 
-		if (transactionCheckListener == null) {
-			setTransactionCheckListener(new DefaultTransactionCheckListener());;
+		if (transactionListener == null) {
+			setTransactionListener(new DefaultTransactionCheckListener());;
 		}
 		
 	}
@@ -173,20 +173,4 @@ public class MQProducerFactoryBean implements FactoryBean<MQProducer>, Initializ
 		return true;
 	}
 
-	public ProducerConfig getConfig() {
-		return config;
-	}
-
-	public void setConfig(ProducerConfig config) {
-		this.config = config;
-	}
-
-	public TransactionCheckListener getTransactionCheckListener() {
-		return transactionCheckListener;
-	}
-
-	public void setTransactionCheckListener(TransactionCheckListener transactionCheckListener) {
-		this.transactionCheckListener = transactionCheckListener;
-	}
-	
 }

@@ -58,7 +58,6 @@
 					<version>3.6.1</version> 
 					<!-- 设置源文件编码方式 -->  
 					<configuration>
-						<defaultLibBundleDir>lib</defaultLibBundleDir>
 						<!-- 源代码编译版本 -->
 						<source>1.7</source>
 						<!-- 目标平台编译版本 -->
@@ -146,8 +145,7 @@
 					<artifactId>maven-jar-plugin</artifactId>  
 					<version>3.0.2</version>  
 					<configuration> 
-						<encoding>${project.build.sourceEncoding}</encoding>
-						<skipIfEmpty>true</skipIfEmpty> 
+						<skipIfEmpty>true</skipIfEmpty>
 	                    <archive>  
                     	 	<manifest>
 								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
@@ -183,11 +181,9 @@
 					 <version>3.0.1</version> 
 					 <!-- 打包source文件为jar文件 -->
 					 <configuration>  
-					 	 <testFailureIgnore>true</testFailureIgnore>
 					 	 <!-- 打包源码一起发布到maven仓库中 -->
 	                     <attach>true</attach>  
-	                     <encoding>${project.build.sourceEncoding}</encoding>  
-	                 </configuration> 
+	                 </configuration>
 					 <executions>
 						 <execution>
 							 <id>attach-sources</id>
