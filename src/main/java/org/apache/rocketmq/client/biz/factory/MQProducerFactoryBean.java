@@ -1,6 +1,9 @@
 package org.apache.rocketmq.client.biz.factory;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.rocketmq.client.producer.TransactionCheckListener;
 import org.apache.rocketmq.client.producer.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,13 +27,13 @@ public class MQProducerFactoryBean implements FactoryBean<MQProducer>, Initializ
     private ProducerConfig config;
 	@Getter
 	@Setter
-	private TransactionListener transactionListener;
+	private TransactionCheckListener transactionCheckListener;
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
 
-		if (transactionListener == null) {
-			setTransactionListener(new DefaultTransactionCheckListener());;
+		if (transactionCheckListener == null) {
+			setTransactionCheckListener(new DefaultTransactionCheckListener());;
 		}
 		
 	}

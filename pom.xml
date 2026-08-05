@@ -57,13 +57,20 @@
 					<!-- 设置源文件编码方式 -->  
 					<configuration>
 						<!-- 源代码编译版本 -->
-						<source>1.7</source>
+						<source>1.8</source>
 						<!-- 目标平台编译版本 -->
-						<target>1.7</target>
+						<target>1.8</target>
 						<!-- 字符集编码 -->
 						<encoding>${project.build.sourceEncoding}</encoding>
 						<!--  -->
 						<maxmem>512M</maxmem>
+						<annotationProcessorPaths>
+							<path>
+								<groupId>org.projectlombok</groupId>
+								<artifactId>lombok</artifactId>
+								<version>1.18.30</version>
+							</path>
+						</annotationProcessorPaths>
 					</configuration>
 				</plugin>
 				<!-- 资源插件：复制主资源文件至主输出目录 -->
@@ -267,7 +274,7 @@
  		<junit.version>4.12</junit.version>
  		<servlet-api.version>3.0.1</servlet-api.version>
  		<slf4j.version>2.0.18</slf4j.version>
- 		<disruptor-biz.version>1.0.0-SNAPSHOT</disruptor-biz.version>
+ 		<disruptor-biz.version>1.0.x.20260630-SNAPSHOT</disruptor-biz.version>
  		<rocketmq.version>4.5.2</rocketmq.version>  
  		<spring.version>4.3.11.RELEASE</spring.version><!-- 4.3.x（JDK 1.7 ）、4.1.x（JDK 1.6）、4.0.x（JDK 1.6） -->
 	</properties>
@@ -336,7 +343,7 @@
 				<version>${spring.version}</version>
 			</dependency>
 			
-		</dependencies>
+	</dependencies>
 	</dependencyManagement>
 
 	<dependencies>
@@ -390,7 +397,13 @@
 			<optional>true</optional>
 		</dependency>	
 
-	</dependencies>
+			<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.30</version>
+			<scope>provided</scope>
+		</dependency>
+</dependencies>
 	
 	
 </project>
