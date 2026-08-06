@@ -1,23 +1,235 @@
-#rocketmq-biz
+# rocketmq-biz
 
-###基于Rocketmq客户端实现的 消息订阅、发布封装。
+[English](./README.md) | [简体中文](./README.zh-CN.md)
 
-- 1、消息发布
+[![Java](https://img.shields.io/badge/Java-17-orange)](https://github.com/easy-4-java/rocketmq-biz) [![License](https://img.shields.io/badge/license-Apache%202.0-green)](./LICENSE)
 
-   a、配置简单，少量配置即可实现消息发布
+## Table of Contents
 
-- 2、消息订阅
+- [1. Project Overview](#1-project-overview)
+- [2. Features & Status](#2-features--status)
+- [3. Requirements & Compatibility](#3-requirements--compatibility)
+- [4. Architecture & Modules](#4-architecture--modules)
+- [5. Installation](#5-installation)
+- [6. Quick Start](#6-quick-start)
+- [7. Configuration](#7-configuration)
+- [8. Core Usage / API](#8-core-usage--api)
+- [9. Testing & Build](#9-testing--build)
+- [10. Versioning & Branches](#10-versioning--branches)
+- [11. Contributing & License](#11-contributing--license)
 
-   a、配置简单，少量配置即可实现基础的消费订阅
+## 1. Project Overview
 
-   b、组件实现了基于责任链的消息消费实现；可实现对具备不同 Topic、Tags、Keys 的消息对象进行专责处理；就如 Filter，该组件实现的Handler采用了同样的原理；
+**rocketmq-biz** is a thin business wrapper around the RocketMQ client (4.5.x) that simplifies message
+publishing and subscription, with several consumption styles:
 
-	 1. /Topic-DC-Output/TagA-Output/** = inDbPostHandler  该配置表示；Topic = Topic-DC-Output , Tags = TagA-Output , Keys = 任何类型 的消息对象交由 inDbPostHandler  来处理
-	 2. /Topic-DC-Output/TagB-Output/** = smsPostHandler  该配置表示；Topic = Topic-DC-Output , Tags = TagB-Output , Keys = 任何类型 的消息对象交由 smsPostHandler 来处理
+| Style                                   | Mechanism                                                                 |
+| :-------------------------------------- | :----------------------------------------------------------------------- |
+| Plain consumption                       | `DefaultMessageConsumeListener` + retry on `RECONSUME_LATER`             |
+| Responsibility-chain consumption        | Route each message to the right handler by `Topic / Tags / Keys` (path-style expressions) |
+| Asynchronous consumption                | Disruptor-backed event dispatch (via `io.github.easy4j:disruptor-biz`)    |
+| Spring event consumption                | Publish each message as a Spring `ApplicationEvent` (`RocketmqEvent`)     |
 
-   通过这种责任链的机制，很好的实现了消息的分类处理；比如数据中心需要处理各个系统推送来的数据，每种处理实现都不相同；这时候就需要用到消息对象的分类处理。
+| Is                                                     | Is not                                          |
+| :----------------------------------------------------- | :---------------------------------------------- |
+| A business wrapper around the RocketMQ client          | A replacement for the RocketMQ broker/client    |
+| Path-routed handler chains (`/Topic/Tags/Keys = handler`) | A general-purpose ESB or message gateway      |
+| Spring `FactoryBean` wiring for producer/consumer      | A Spring Boot starter                           |
 
-  c、实现了基于 Disruptor 异步并发框架的消息异步消费实现；该实现依赖于 disruptor-biz 组件；此组件一样实现了基于责任链模式的事件分发；该实现主要应用 Disruptor 的 高性能，在大量的消息异步处理时，应该会很有效。
+Typical scenarios:
 
-  d、实现了基于Spring 框架的 ApplicationEvent 机制的消息消费实现，该实现只负责将消息对象以事件形式发布处理；具体消息处理逻辑需开发者实现 ApplicationEvent 监听接口
+| Scenario                              | Description                                                       |
+| :------------------------------------ | :---------------------------------------------------------------- |
+| Data center ingestion                 | One topic, many tags — each handled by a dedicated handler        |
+| Order / SMS / notification routing    | `/Order/TagCreated/**` → one handler, `/Order/TagPaid/**` → another |
+| High-throughput async consumption     | Disruptor ring-buffer based handling for bursty traffic           |
+| Event-driven integration              | ApplicationEvent listeners in the same Spring context             |
 
+## 2. Features & Status
+
+| Capability                                     | Status      | Main API                                                                      |
+| :--------------------------------------------- | :---------- | :---------------------------------------------------------------------------- |
+| Publish wrappers (sync/async/oneway/batch/ordered/transaction) | Implemented | `RocketmqTemplate` — mirrors `MQProducer` send variants; selectors (`HASH_SELECTOR`, `RANDOOM_SELECTOR`, `Machine_RANDOOM_SELECTOR`) |
+| Consumer factory                               | Implemented | `MQPushConsumerFactoryBean` (`ConsumerConfig`, listener, offset store, queue allocation strategy) |
+| Producer factory                               | Implemented | `MQProducerFactoryBean` (`ProducerConfig`, default `DefaultTransactionCheckListener`) |
+| Retry-aware consumption                        | Implemented | `DefaultMessageConsumeListener` — retries via `RECONSUME_LATER` up to `retryTimesWhenConsumeFailed` |
+| Responsibility-chain routing                  | Implemented | `MQEventHandlerFactoryBean` + `DefaultHandlerChainManager` + `PathMatchingHandlerChainResolver`; path expressions `/Topic/Tags/Keys` |
+| Disruptor async consumption                    | Implemented | `RocketmqDisruptorEvent`, `RocketmqDataEventFactory` / `RocketmqDataEventTranslator` (depends on `disruptor-biz`) |
+| Spring ApplicationEvent consumption            | Implemented | `RocketmqEvent` (extends `ApplicationEvent`) + `ApplicationEventMessageHandler` |
+| Shutdown hooks                                 | Implemented | `MQProducerShutdownHook`, `MQPushConsumerShutdownHook`                       |
+| INI-style chain definitions                    | Implemented | `config.Ini` parser; `setHandlerChainDefinitions("...")` on the event-handler factory |
+| Unit tests                                     | Partial     | `src/test` contains runnable examples (`SimpleProducer`, `SimpleConsumer`, ...); no JUnit `@Test` classes |
+
+## 3. Requirements & Compatibility
+
+| Requirement   | Version                                      |
+| :------------ | :------------------------------------------- |
+| JDK           | 8+                                           |
+| Maven         | 3.0+ (wrapper included)                      |
+| RocketMQ      | 4.5.2 (`rocketmq-client`, `rocketmq-common`) |
+| Spring        | 4.3.11.RELEASE (`spring-beans`/`context`/`core`) |
+| disruptor-biz | `2.0.x.x.20260630-SNAPSHOT` (same line)        |
+
+Version lines of the easy4j project:
+
+| Branch        | JDK  | Version pattern | Notes                       |
+| :------------ | :--- | :-------------- | :-------------------------- |
+| `feature/1.0.x` | 8    | `1.0.x.*`       | This README, current branch |
+| `feature/2.0.x` | 17   | `2.0.x.*`       | JDK 17 line                 |
+| `feature/3.0.x` | 21   | `3.0.x.*`       | JDK 21 line                 |
+
+## 4. Architecture & Modules
+
+```text
+ producer path                          consumer path
+      |                                      |
+      v                                      v
+ RocketmqTemplate ----------------> MQPushConsumerFactoryBean
+ (send/oneway/batch/tx)                  |
+                                         v
+                              DefaultMessageConsumeListener (retry)
+                                         |
+                                         v
+                              MQEventHandlerFactoryBean -> HandlerChain
+                              /Topic/Tags/Keys = handler1, handler2 ...
+                              |               |           |
+                              v               v           v
+                        RocketmqEventMessageHandler
+                              |               |           |
+                    ApplicationEvent     Disruptor      plain handlers
+                    (Spring events)   (disruptor-biz)
+```
+
+Single-module Maven project (`jar` packaging), root package `org.apache.rocketmq.client.biz`:
+
+| Package                    | Responsibility                                    |
+| :------------------------- | :------------------------------------------------ |
+| `config`                   | `ProducerConfig`, `ConsumerConfig`, `Ini` parser  |
+| `factory`                  | `MQProducerFactoryBean`, `MQPushConsumerFactoryBean`, `MQEventHandlerFactoryBean` |
+| `listener`                 | `DefaultMessageConsumeListener`, `DefaultTransactionCheckListener` |
+| `event` + `event.handler`  | `RocketmqEvent`, chain framework and handler implementations |
+| `disruptor`                | `RocketmqDataEventFactory`, `RocketmqDataEventTranslator` |
+| `hooks`                    | Producer/consumer shutdown hooks                  |
+| `exception` / `util`       | `RocketMQException`, `EventHandleException`, `StringUtils` |
+
+## 5. Installation
+
+Artifacts are published to the aliyun repository and GitHub Releases; they are **not** on Maven Central yet.
+
+```xml
+<dependency>
+    <groupId>io.github.easy4j</groupId>
+    <artifactId>rocketmq-biz</artifactId>
+    <version>2.0.x.x.20260630-SNAPSHOT</version>
+</dependency>
+```
+
+```groovy
+implementation 'io.github.easy4j:rocketmq-biz:2.0.x.x.20260630-SNAPSHOT'
+```
+
+## 6. Quick Start
+
+Publishing with `RocketmqTemplate`:
+
+```java
+@Autowired
+private RocketmqTemplate rocketmqTemplate;
+
+public void publish() throws Exception {
+    SendResult result = rocketmqTemplate.send(
+            "Topic-DC-Output",   // topic
+            "TagA-Output",       // tags
+            "OrderID001",        // keys (business uniqueness)
+            "hello rocketmq");   // body
+}
+```
+
+Consumption with a responsibility chain:
+
+```java
+// 1) handlers
+Map<String, EventHandler<RocketmqEvent>> handlers = new LinkedHashMap<String, EventHandler<RocketmqEvent>>();
+handlers.put("inDbPostHandler", new InDbPostHandler());
+handlers.put("smsPostHandler", new SmsPostHandler());
+
+// 2) route expressions: /Topic/Tags/Keys = handler(s)
+MQEventHandlerFactoryBean factoryBean = new MQEventHandlerFactoryBean();
+factoryBean.setHandlers(handlers);
+factoryBean.setHandlerChainDefinitions(
+        "/Topic-DC-Output/TagA-Output/** = inDbPostHandler\n" +
+        "/Topic-DC-Output/TagB-Output/** = smsPostHandler");
+
+EventHandler<RocketmqEvent> eventHandler = factoryBean.getObject();
+```
+
+Expected result: a message with `Topic=Topic-DC-Output, Tags=TagA-Output` and any key is delivered to
+`inDbPostHandler`; a `TagB-Output` message goes to `smsPostHandler`. The `/**` suffix matches any `Keys`
+value, so different systems pushing into the same topic are routed to dedicated processing logic.
+
+## 7. Configuration
+
+| Setting                                | How                                                      | Default                                  |
+| :------------------------------------- | :------------------------------------------------------- | :--------------------------------------- |
+| Namesrv address                        | `ProducerConfig` / `ConsumerConfig` (extends `ClientConfig`) | —                                    |
+| Producer group / timeouts              | `ProducerConfig` (`producerGroup`, `sendMsgTimeout`, `compressMsgBodyOverHowmuch`, ...) | 3000 ms / 4 KiB |
+| Consumer group / model / from-where    | `ConsumerConfig` (`consumerGroup`, `messageModel`, consume-from-where, retry count, ...) | `CLUSTERING` |
+| Chain definitions                      | `MQEventHandlerFactoryBean.setHandlerChainDefinitions(String)` (INI format, `[urls]` section) | —      |
+| Queue allocation strategy              | `MQPushConsumerFactoryBean.setAllocateMessageQueueStrategy(...)` | `AllocateMessageQueueConsistentHash` |
+| Retry on failure                       | `ConsumerConfig.retryTimesWhenConsumeFailed`             | —                                        |
+
+## 8. Core Usage / API
+
+Sending variants on `RocketmqTemplate` (all delegate to the injected `MQProducer`):
+
+```java
+rocketmqTemplate.send(msg);                            // sync
+rocketmqTemplate.send(msg, sendCallback);              // async
+rocketmqTemplate.sendOneway(msg);                      // fire-and-forget
+rocketmqTemplate.send(msgs);                           // batch
+rocketmqTemplate.send(msg, rocketmqTemplate.HASH_SELECTOR, orderId); // ordered by key hash
+rocketmqTemplate.sendMessageInTransaction(msg, tranExecuter, arg);   // transactional
+```
+
+Handler chain internals:
+
+| Type                                       | Role                                                     |
+| :----------------------------------------- | :------------------------------------------------------- |
+| `DefaultHandlerChainManager`               | Registers handlers and builds chains from definitions    |
+| `PathMatchingHandlerChainResolver`         | Matches `/Topic/Tags/Keys` expressions to a chain        |
+| `AbstractRouteableMessageHandler`          | Executes the resolved chain, wraps failures in `EventHandleException` |
+| `RocketmqEventMessageHandler`              | Bridge from `MessageExt` to `RocketmqEvent` + chain      |
+| `ApplicationEventMessageHandler`           | Publishes `RocketmqEvent` into the Spring context        |
+| `DisruptorEventMessageHandler`             | Publishes `RocketmqDisruptorEvent` into the Disruptor pipeline |
+
+## 9. Testing & Build
+
+```bash
+./mvnw clean verify
+```
+
+- Maven wrapper (`mvnw`) is committed to the repository.
+- JaCoCo is configured with a line-coverage rule of 90% (`haltOnFailure=false`).
+- `src/test` ships runnable example programs (e.g. `SimpleProducer`, `SimpleSyncProducer`,
+  `SimpleAsyncProducer`, `SimpleOnewayProducer`, `BatchProducer`, `OrderedProducer`,
+  `ScheduledMessageProducer`, `BroadcastProducer`, `SimpleConsumer`, `OrderedConsumer`,
+  `BroadcastConsumer`, `ScheduledMessageConsumer`, `ListSplitter`) — these require a running RocketMQ
+  broker (default `127.0.0.1:9876`) and are not JUnit tests.
+
+## 10. Versioning & Branches
+
+| Branch        | JDK  | Version pattern | Maintenance                          |
+| :------------ | :--- | :-------------- | :----------------------------------- |
+| `feature/1.0.x` | 8    | `1.0.x.*`       | Current branch (RocketMQ 4.5.x)      |
+| `feature/2.0.x` | 17   | `2.0.x.*`       | JDK 17 line                          |
+| `feature/3.0.x` | 21   | `3.0.x.*`       | JDK 21 line                          |
+
+Artifacts are distributed via the aliyun Maven repository and GitHub Releases. Use the branch matching your
+JDK baseline.
+
+## 11. Contributing & License
+
+Contributions are welcome — especially JUnit tests for the handler chain and the `Ini` parser. Please open an
+issue before larger changes.
+
+This project is licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
