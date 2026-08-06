@@ -306,6 +306,7 @@
 		<java.version>17</java.version>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <junit.version>4.13.2</junit.version>
+        <junit-jupiter.version>6.1.0</junit-jupiter.version>
         <servlet-api.version>3.0.1</servlet-api.version>
         <slf4j.version>2.0.18</slf4j.version>
         <disruptor-biz.version>2.0.x.20260630-SNAPSHOT</disruptor-biz.version>
