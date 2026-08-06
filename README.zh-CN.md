@@ -2,9 +2,6 @@
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
-![Java](https://img.shields.io/badge/Java-21-orange)
-![License](https://img.shields.io/badge/License-Apache%202.0-blue)
-
 ## 目录
 
 - [1. 项目概述](#1-项目概述)
@@ -18,8 +15,6 @@
 - [9. 测试与构建](#9-测试与构建)
 - [10. 版本线与分支](#10-版本线与分支)
 - [11. 贡献与许可](#11-贡献与许可)
-
----
 
 ## 1. 项目概述
 

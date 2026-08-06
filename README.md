@@ -2,9 +2,6 @@
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
-![Java](https://img.shields.io/badge/Java-21-orange)
-![License](https://img.shields.io/badge/License-Apache%202.0-blue)
-
 ## Table of Contents
 
 - [1. Project Overview](#1-project-overview)
@@ -18,8 +15,6 @@
 - [9. Testing & Build](#9-testing--build)
 - [10. Versioning & Branches](#10-versioning--branches)
 - [11. Contributing & License](#11-contributing--license)
-
----
 
 ## 1. Project Overview
 
