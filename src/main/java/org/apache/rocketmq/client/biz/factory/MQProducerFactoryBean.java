@@ -1,5 +1,7 @@
 package org.apache.rocketmq.client.biz.factory;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.MQProducer;
@@ -23,7 +25,11 @@ public class MQProducerFactoryBean implements FactoryBean<MQProducer>, Initializ
 	/**
 	 * 客户端配置对象：必须存在
 	 */
+	@Getter
+	@Setter
 	private ProducerConfig config;
+	@Getter
+	@Setter
 	private TransactionCheckListener transactionCheckListener;
 
 	@Override
@@ -173,20 +179,4 @@ public class MQProducerFactoryBean implements FactoryBean<MQProducer>, Initializ
 		return true;
 	}
 
-	public ProducerConfig getConfig() {
-		return config;
-	}
-
-	public void setConfig(ProducerConfig config) {
-		this.config = config;
-	}
-
-	public TransactionCheckListener getTransactionCheckListener() {
-		return transactionCheckListener;
-	}
-
-	public void setTransactionCheckListener(TransactionCheckListener transactionCheckListener) {
-		this.transactionCheckListener = transactionCheckListener;
-	}
-	
 }
