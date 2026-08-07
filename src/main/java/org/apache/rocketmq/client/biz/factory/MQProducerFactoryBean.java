@@ -3,8 +3,10 @@ package org.apache.rocketmq.client.biz.factory;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.rocketmq.client.producer.DefaultMQProducer;
+import org.apache.rocketmq.client.producer.MQProducer;
 import org.apache.rocketmq.client.producer.TransactionCheckListener;
-import org.apache.rocketmq.client.producer.*;
+import org.apache.rocketmq.client.producer.TransactionMQProducer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.FactoryBean;
@@ -24,7 +26,8 @@ public class MQProducerFactoryBean implements FactoryBean<MQProducer>, Initializ
 	 * 客户端配置对象：必须存在
 	 */
 	@Getter
-    private ProducerConfig config;
+	@Setter
+	private ProducerConfig config;
 	@Getter
 	@Setter
 	private TransactionCheckListener transactionCheckListener;
