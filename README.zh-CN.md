@@ -4,6 +4,8 @@
 
 [![Java](https://img.shields.io/badge/Java-17-orange)](https://github.com/easy-4-java/rocketmq-biz) [![License](https://img.shields.io/badge/license-Apache%202.0-green)](./LICENSE)
 
+rocketmq-biz 是基于 RocketMQ 客户端（4.5.x）实现的轻量业务封装，简化消息的发布与订阅，并支持多种消费方式：
+
 ## 目录
 
 - [1. 项目概述](#1-项目概述)

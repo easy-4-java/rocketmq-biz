@@ -4,6 +4,8 @@
 
 [![Java](https://img.shields.io/badge/Java-17-orange)](https://github.com/easy-4-java/rocketmq-biz) [![License](https://img.shields.io/badge/license-Apache%202.0-green)](./LICENSE)
 
+rocketmq-biz is a thin business wrapper around the RocketMQ client (4.5.x) that simplifies message
+
 ## Table of Contents
 
 - [1. Project Overview](#1-project-overview)
