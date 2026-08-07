@@ -1,8 +1,10 @@
-# rocketmq-biz
+# rocketmq-extension
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
-[![Java](https://img.shields.io/badge/Java-17-orange)](https://github.com/easy-4-java/rocketmq-biz) [![License](https://img.shields.io/badge/license-Apache%202.0-green)](./LICENSE)
+[![Java](https://img.shields.io/badge/Java-17-orange)](https://github.com/easy-4-java/rocketmq-extension) [![License](https://img.shields.io/badge/license-Apache%202.0-green)](./LICENSE)
+
+rocketmq-extension is a thin business wrapper around the RocketMQ client (4.5.x) that simplifies message
 
 ## Table of Contents
 
@@ -20,7 +22,7 @@
 
 ## 1. Project Overview
 
-**rocketmq-biz** is a thin business wrapper around the RocketMQ client (4.5.x) that simplifies message
+**rocketmq-extension** is a thin business wrapper around the RocketMQ client (4.5.x) that simplifies message
 publishing and subscription, with several consumption styles:
 
 | Style                                   | Mechanism                                                                 |
@@ -68,7 +70,7 @@ Typical scenarios:
 | Maven         | 3.0+ (wrapper included)                      |
 | RocketMQ      | 4.5.2 (`rocketmq-client`, `rocketmq-common`) |
 | Spring        | 4.3.11.RELEASE (`spring-beans`/`context`/`core`) |
-| disruptor-biz | `2.0.x.x.20260630-SNAPSHOT` (same line)        |
+| disruptor-biz | `2.0.x.20260630-SNAPSHOT` (same line)          |
 
 Version lines of the easy4j project:
 
@@ -119,13 +121,13 @@ Artifacts are published to the aliyun repository and GitHub Releases; they are *
 ```xml
 <dependency>
     <groupId>io.github.easy4j</groupId>
-    <artifactId>rocketmq-biz</artifactId>
-    <version>2.0.x.x.20260630-SNAPSHOT</version>
+    <artifactId>rocketmq-extension</artifactId>
+    <version>2.0.x.20260630-SNAPSHOT</version>
 </dependency>
 ```
 
 ```groovy
-implementation 'io.github.easy4j:rocketmq-biz:2.0.x.x.20260630-SNAPSHOT'
+implementation 'io.github.easy4j:rocketmq-extension:2.0.x.20260630-SNAPSHOT'
 ```
 
 ## 6. Quick Start
@@ -220,8 +222,8 @@ Handler chain internals:
 
 | Branch        | JDK  | Version pattern | Maintenance                          |
 | :------------ | :--- | :-------------- | :----------------------------------- |
-| `feature/1.0.x` | 8    | `1.0.x.*`       | Current branch (RocketMQ 4.5.x)      |
-| `feature/2.0.x` | 17   | `2.0.x.*`       | JDK 17 line                          |
+| `feature/1.0.x` | 8    | `1.0.x.*`       | RocketMQ 4.5.x                       |
+| `feature/2.0.x` | 17   | `2.0.x.*`       | Current branch (RocketMQ 4.5.x)      |
 | `feature/3.0.x` | 21   | `3.0.x.*`       | JDK 21 line                          |
 
 Artifacts are distributed via the aliyun Maven repository and GitHub Releases. Use the branch matching your

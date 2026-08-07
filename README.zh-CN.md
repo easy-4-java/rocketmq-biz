@@ -1,8 +1,10 @@
-# rocketmq-biz
+# rocketmq-extension
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
-[![Java](https://img.shields.io/badge/Java-17-orange)](https://github.com/easy-4-java/rocketmq-biz) [![License](https://img.shields.io/badge/license-Apache%202.0-green)](./LICENSE)
+[![Java](https://img.shields.io/badge/Java-17-orange)](https://github.com/easy-4-java/rocketmq-extension) [![License](https://img.shields.io/badge/license-Apache%202.0-green)](./LICENSE)
+
+rocketmq-extension 是基于 RocketMQ 客户端（4.5.x）实现的轻量业务封装，简化消息的发布与订阅，并支持多种消费方式：
 
 ## 目录
 
@@ -20,7 +22,7 @@
 
 ## 1. 项目概述
 
-**rocketmq-biz** 是基于 RocketMQ 客户端（4.5.x）实现的轻量业务封装，简化消息的发布与订阅，并支持多种消费方式：
+**rocketmq-extension** 是基于 RocketMQ 客户端（4.5.x）实现的轻量业务封装，简化消息的发布与订阅，并支持多种消费方式：
 
 | 方式                     | 机制                                                                  |
 | :----------------------- | :-------------------------------------------------------------------- |
@@ -67,7 +69,7 @@
 | Maven        | 3.0+（已内置 wrapper）                        |
 | RocketMQ     | 4.5.2（`rocketmq-client`、`rocketmq-common`）|
 | Spring       | 4.3.11.RELEASE（`spring-beans`/`context`/`core`）|
-| disruptor-biz| `2.0.x.x.20260630-SNAPSHOT`（同一版本线）       |
+| disruptor-biz| `2.0.x.20260630-SNAPSHOT`（同一版本线）         |
 
 easy4j 项目的版本线：
 
@@ -118,13 +120,13 @@ easy4j 项目的版本线：
 ```xml
 <dependency>
     <groupId>io.github.easy4j</groupId>
-    <artifactId>rocketmq-biz</artifactId>
-    <version>2.0.x.x.20260630-SNAPSHOT</version>
+    <artifactId>rocketmq-extension</artifactId>
+    <version>2.0.x.20260630-SNAPSHOT</version>
 </dependency>
 ```
 
 ```groovy
-implementation 'io.github.easy4j:rocketmq-biz:2.0.x.x.20260630-SNAPSHOT'
+implementation 'io.github.easy4j:rocketmq-extension:2.0.x.20260630-SNAPSHOT'
 ```
 
 ## 6. 快速开始
@@ -213,8 +215,8 @@ rocketmqTemplate.sendMessageInTransaction(msg, tranExecuter, arg);   // 事务�
 
 | 分支           | JDK  | 版本模式   | 维护说明                              |
 | :------------- | :--- | :--------- | :------------------------------------ |
-| `feature/1.0.x` | 8    | `1.0.x.*`  | 当前分支（RocketMQ 4.5.x）            |
-| `feature/2.0.x` | 17   | `2.0.x.*`  | JDK 17 版本线                         |
+| `feature/1.0.x` | 8    | `1.0.x.*`  | RocketMQ 4.5.x                       |
+| `feature/2.0.x` | 17   | `2.0.x.*`  | 当前分支（RocketMQ 4.5.x）            |
 | `feature/3.0.x` | 21   | `3.0.x.*`  | JDK 21 版本线                         |
 
 制品通过阿里云 Maven 私服与 GitHub Releases 分发。请按 JDK 基线选择对应分支。
