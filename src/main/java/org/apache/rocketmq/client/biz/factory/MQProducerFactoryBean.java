@@ -18,6 +18,19 @@ import org.apache.rocketmq.client.biz.hooks.MQProducerShutdownHook;
 import org.apache.rocketmq.client.biz.listener.DefaultTransactionCheckListener;
 
 
+/**
+ * Spring {@link FactoryBean} that creates and configures a RocketMQ {@link MQProducer}.
+ *
+ * <p>Supports both regular ({@link DefaultMQProducer}) and transactional
+ * ({@link TransactionMQProducer}) producers based on the {@link ProducerConfig}.
+ * Registers a JVM shutdown hook for graceful resource cleanup.</p>
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see org.springframework.beans.factory.FactoryBean
+ * @see ProducerConfig
+ * @see DefaultMQProducer
+ */
 public class MQProducerFactoryBean implements FactoryBean<MQProducer>, InitializingBean  {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(MQProducerFactoryBean.class);

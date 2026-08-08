@@ -4,6 +4,12 @@ import org.apache.rocketmq.client.biz.event.RocketmqEvent;
 import org.apache.rocketmq.client.biz.event.handler.chain.HandlerChain;
 
 /**
+ * Contract for handling a {@link RocketmqEvent} within a handler chain.
+ *
+ * @param <T> the concrete event type
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see HandlerChain
  */
 public interface EventHandler<T extends RocketmqEvent> {
 

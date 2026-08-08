@@ -21,6 +21,14 @@ import java.util.TreeSet;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 
+/**
+ * Extended string utility class that combines Apache Commons Lang {@code StringUtils}
+ * with Spring-style path, locale, and collection helpers.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see org.apache.commons.lang3.StringUtils
+ */
 public abstract class StringUtils extends org.apache.commons.lang3.StringUtils {
 	
 	private static final String FOLDER_SEPARATOR = "/";
