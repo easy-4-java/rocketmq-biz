@@ -2,6 +2,13 @@ package org.apache.rocketmq.client.biz.exception;
 
 import org.apache.rocketmq.client.exception.MQClientException;
 
+/**
+ * Extended {@link MQClientException} for RocketMQ extension library errors.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see org.apache.rocketmq.client.exception.MQClientException
+ */
 @SuppressWarnings("serial")
 public class RocketMQException extends MQClientException {
 

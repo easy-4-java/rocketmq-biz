@@ -8,7 +8,13 @@ import org.apache.rocketmq.client.biz.event.handler.EventHandler;
 import org.apache.rocketmq.client.biz.event.handler.NamedHandlerList;
 
 /**
- * HandlerChain管理器，负责创建和维护HandlerChain
+ * Manager responsible for creating, maintaining, and resolving handler chains.
+ *
+ * @param <T> the concrete event type
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see HandlerChain
+ * @see EventHandler
  */
 public interface HandlerChainManager<T extends RocketmqEvent> {
 

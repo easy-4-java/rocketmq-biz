@@ -6,6 +6,17 @@ import org.slf4j.LoggerFactory;
 import org.apache.rocketmq.client.biz.event.RocketmqEvent;
 import org.apache.rocketmq.client.biz.event.handler.chain.HandlerChain;
 
+/**
+ * Abstract handler that can be dynamically enabled or disabled.
+ *
+ * <p>When disabled, the handler simply passes the event to the next handler in the chain.</p>
+ *
+ * @param <T> the concrete event type
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see AbstractNameableMessageHandler
+ * @see EventHandler
+ */
 public abstract class AbstractEnabledMessageHandler<T extends RocketmqEvent> extends AbstractNameableMessageHandler<T> {
 
 	protected final Logger LOG = LoggerFactory.getLogger(AbstractEnabledMessageHandler.class);

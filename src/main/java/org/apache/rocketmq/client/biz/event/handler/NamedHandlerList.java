@@ -6,6 +6,15 @@ import org.apache.rocketmq.client.biz.event.RocketmqEvent;
 import org.apache.rocketmq.client.biz.event.handler.chain.HandlerChain;
 
 
+/**
+ * A named, ordered list of {@link EventHandler}s that can produce a proxied {@link HandlerChain}.
+ *
+ * @param <T> the concrete event type
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see EventHandler
+ * @see HandlerChain
+ */
 public interface NamedHandlerList<T extends RocketmqEvent> extends List<EventHandler<T>> {
 	 
 	/**

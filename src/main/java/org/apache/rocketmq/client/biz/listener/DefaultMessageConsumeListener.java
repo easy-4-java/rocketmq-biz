@@ -12,6 +12,18 @@ import org.slf4j.LoggerFactory;
 import org.apache.rocketmq.client.biz.config.ConsumerConfig;
 import org.apache.rocketmq.client.biz.event.handler.MessageHandler;
 
+/**
+ * Default {@link MessageListenerConcurrently} that delegates message processing
+ * to a {@link MessageHandler} with configurable retry logic.
+ *
+ * <p>If the handler returns {@code false} or throws an exception, the message is
+ * re-consumed up to the number of times specified by {@link ConsumerConfig#getRetryTimesWhenConsumeFailed()}.</p>
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see MessageHandler
+ * @see ConsumerConfig
+ */
 public class DefaultMessageConsumeListener implements MessageListenerConcurrently {
 
 	private static final Logger LOG = LoggerFactory.getLogger(DefaultMessageConsumeListener.class);

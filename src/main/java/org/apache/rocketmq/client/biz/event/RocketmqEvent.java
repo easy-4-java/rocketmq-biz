@@ -20,6 +20,18 @@ import java.io.UnsupportedEncodingException;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.springframework.context.ApplicationEvent;
 
+/**
+ * A Spring {@link ApplicationEvent} that wraps a consumed RocketMQ {@link MessageExt}.
+ *
+ * <p>Published via Spring's event mechanism to decouple message consumption from
+ * business-logic processing. Carries topic, tag, body, and a route expression
+ * derived from the message metadata.</p>
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see org.springframework.context.ApplicationEvent
+ * @see org.apache.rocketmq.common.message.MessageExt
+ */
 @SuppressWarnings("serial")
 public class RocketmqEvent extends ApplicationEvent {
 

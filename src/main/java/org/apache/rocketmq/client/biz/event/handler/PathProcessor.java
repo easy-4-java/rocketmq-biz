@@ -3,7 +3,12 @@ package org.apache.rocketmq.client.biz.event.handler;
 import org.apache.rocketmq.client.biz.event.RocketmqEvent;
 
 /**
- * 给Handler设置路径
+ * Contract for associating a path pattern with an {@link EventHandler}.
+ *
+ * @param <T> the concrete event type
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see EventHandler
  */
 public interface PathProcessor<T extends RocketmqEvent> {
 	
