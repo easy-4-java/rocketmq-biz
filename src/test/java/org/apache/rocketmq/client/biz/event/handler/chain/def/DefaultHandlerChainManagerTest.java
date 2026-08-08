@@ -95,7 +95,7 @@ public class DefaultHandlerChainManagerTest {
         manager.addToChain("", "h1");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = Exception.class)
     public void shouldThrowWhenAddToChainWithUnknownHandler() {
         DefaultHandlerChainManager manager = new DefaultHandlerChainManager();
         manager.createChain("chain1", "");

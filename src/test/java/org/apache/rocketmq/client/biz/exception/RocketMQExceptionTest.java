@@ -3,8 +3,6 @@ package org.apache.rocketmq.client.biz.exception;
 import static org.junit.Assert.*;
 
 import org.apache.rocketmq.client.exception.MQClientException;
-import org.apache.rocketmq.client.exception.MQClientException;
-import org.apache.rocketmq.common.protocol.ResponseCode;
 import org.junit.Test;
 
 /**
@@ -14,9 +12,9 @@ public class RocketMQExceptionTest {
 
     @Test
     public void shouldCreateWithResponseCodeAndMessage() {
-        RocketMQException ex = new RocketMQException(ResponseCode.TOPIC_NOT_EXIST.getCode(), "topic missing");
+        RocketMQException ex = new RocketMQException(100, "topic missing");
         assertEquals("topic missing", ex.getErrorMessage());
-        assertEquals(ResponseCode.TOPIC_NOT_EXIST.getCode(), ex.getResponseCode());
+        assertEquals(100, ex.getResponseCode());
     }
 
     @Test

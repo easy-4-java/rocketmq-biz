@@ -148,7 +148,8 @@ public class DefaultNamedHandlerListTest {
     @Test
     public void shouldDelegateRetainAll() {
         DefaultNamedHandlerList list = new DefaultNamedHandlerList("test");
-        assertTrue(list.retainAll(new ArrayList<>()));
+        // retainAll on empty list returns false (nothing changed)
+        assertFalse(list.retainAll(new ArrayList<>()));
     }
 
     @Test

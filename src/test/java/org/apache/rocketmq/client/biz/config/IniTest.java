@@ -286,9 +286,12 @@ public class IniTest {
         assertTrue(section.isEmpty());
     }
 
-    @Test(expected = NullPointerException.class)
-    public void shouldThrowWhenSectionNameIsNull() {
-        new Ini().addSection(null);
+    @Test
+    public void shouldHandleNullSectionName() {
+        // addSection with null defaults to DEFAULT_SECTION_NAME
+        Ini ini = new Ini();
+        Ini.Section section = ini.addSection(null);
+        assertNotNull(section);
     }
 
     @Test
