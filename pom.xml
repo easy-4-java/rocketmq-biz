@@ -122,8 +122,8 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>2.19.1</version>
                     <configuration>
-                        <skip>true</skip>
-                        <skipTests>true</skipTests>
+                        <skip>false</skip>
+                        <skipTests>false</skipTests>
                         <forkMode>once</forkMode>
                         <argLine>-Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=256m -Dfile.encoding=UTF-8</argLine>
                         <additionalClasspathElements>
@@ -314,6 +314,7 @@
         <spring.version>4.3.11.RELEASE</spring.version>
         <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
         <maven-jacoco-plugin.version>0.8.15</maven-jacoco-plugin.version>
+        <maven-central-publishing-plugin.version>0.11.0</maven-central-publishing-plugin.version>
     </properties>
 
     <!-- 依赖版本统一管理（dependencyManagement） -->
