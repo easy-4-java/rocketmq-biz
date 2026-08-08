@@ -8,6 +8,18 @@ import com.lmax.disruptor.biz.event.DisruptorEvent;
 
 import org.apache.rocketmq.client.biz.util.StringUtils;
 
+/**
+ * A Disruptor-based event that wraps a consumed RocketMQ {@link MessageExt}.
+ *
+ * <p>Carries the raw message along with topic, tag, and body fields for fast
+ * downstream processing. Builds a route expression from the message metadata
+ * if none is explicitly set.</p>
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see com.lmax.disruptor.biz.event.DisruptorEvent
+ * @see org.apache.rocketmq.common.message.MessageExt
+ */
 @SuppressWarnings("serial")
 public class RocketmqDisruptorEvent extends DisruptorEvent {
 

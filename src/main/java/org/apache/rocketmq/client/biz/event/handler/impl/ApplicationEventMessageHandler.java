@@ -10,6 +10,16 @@ import org.springframework.context.ApplicationEventPublisherAware;
 import org.apache.rocketmq.client.biz.event.RocketmqEvent;
 import org.apache.rocketmq.client.biz.event.handler.MessageHandler;
 
+/**
+ * {@link MessageHandler} that converts a consumed RocketMQ message into a
+ * {@link RocketmqEvent} and publishes it via Spring's
+ * {@link ApplicationEventPublisher}.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see MessageHandler
+ * @see RocketmqEvent
+ */
 public class ApplicationEventMessageHandler implements MessageHandler, ApplicationEventPublisherAware {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ApplicationEventMessageHandler.class);

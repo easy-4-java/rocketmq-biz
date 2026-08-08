@@ -2,6 +2,15 @@ package org.apache.rocketmq.client.biz.event.handler;
 
 import org.apache.rocketmq.client.biz.event.RocketmqEvent;
 
+/**
+ * Abstract handler that implements {@link Nameable} by storing a handler name.
+ *
+ * @param <T> the concrete event type
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see EventHandler
+ * @see Nameable
+ */
 public abstract class AbstractNameableMessageHandler<T extends RocketmqEvent> implements EventHandler<T>, Nameable {
 
 	/**

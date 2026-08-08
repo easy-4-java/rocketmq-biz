@@ -10,6 +10,17 @@ import org.apache.rocketmq.client.biz.event.handler.chain.HandlerChain;
 import org.apache.rocketmq.client.biz.event.handler.chain.HandlerChainManager;
 import org.apache.rocketmq.client.biz.event.handler.chain.HandlerChainResolver;
 
+/**
+ * {@link HandlerChainResolver} that matches event route expressions against
+ * registered path patterns (using Spring's {@link PathMatcher}) to select
+ * the appropriate handler chain.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see HandlerChainResolver
+ * @see HandlerChainManager
+ * @see org.springframework.util.PathMatcher
+ */
 public class PathMatchingHandlerChainResolver implements HandlerChainResolver<RocketmqEvent> {
 
 	private static final Logger log = LoggerFactory.getLogger(PathMatchingHandlerChainResolver.class);

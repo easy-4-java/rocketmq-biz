@@ -10,6 +10,16 @@ import org.springframework.util.PathMatcher;
 
 import org.apache.rocketmq.client.biz.event.RocketmqEvent;
 
+/**
+ * Abstract handler that matches event route expressions against a set of
+ * Ant-style path patterns before delegating to subclass logic.
+ *
+ * @param <T> the concrete event type
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see AbstractAdviceMessageHandler
+ * @see PathProcessor
+ */
 public abstract class AbstractPathMatchMessageHandler<T extends RocketmqEvent> extends AbstractAdviceMessageHandler<T>  implements PathProcessor<T> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(AbstractPathMatchMessageHandler.class);

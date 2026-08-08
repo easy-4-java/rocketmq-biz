@@ -6,6 +6,18 @@ import java.util.Map;
 import org.apache.rocketmq.client.ClientConfig;
 import org.apache.rocketmq.common.UtilAll;
 
+/**
+ * Configuration POJO for a RocketMQ push consumer.
+ *
+ * <p>Encapsulates consumer-specific settings such as consumer group, message model,
+ * consumption offset strategy, thread pool sizes, and subscription mappings.
+ * Extends {@link ClientConfig} for common client settings like name-server address.</p>
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see org.apache.rocketmq.client.ClientConfig
+ * @see org.apache.rocketmq.client.consumer.DefaultMQPushConsumer
+ */
 public class ConsumerConfig extends ClientConfig {
 	
 	/**

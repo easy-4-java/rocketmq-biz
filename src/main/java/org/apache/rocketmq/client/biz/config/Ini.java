@@ -18,6 +18,17 @@ import org.slf4j.LoggerFactory;
 import org.apache.rocketmq.client.biz.exception.EventHandleException;
 import org.apache.rocketmq.client.biz.util.StringUtils;
 
+/**
+ * Represents an INI-formatted configuration as a map of named {@link Section}s.
+ *
+ * <p>Supports loading from raw strings, {@link InputStream}s, {@link Reader}s, and
+ * {@link Scanner}s. Each section is a {@code Map<String, String>} of key-value pairs.
+ * Lines starting with {@code #} or {@code ;} are treated as comments.</p>
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see Ini.Section
+ */
 public class Ini implements Map<String, Ini.Section> {
 
     private static transient final Logger log = LoggerFactory.getLogger(Ini.class);

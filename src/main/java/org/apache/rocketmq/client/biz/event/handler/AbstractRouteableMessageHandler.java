@@ -10,6 +10,16 @@ import org.apache.rocketmq.client.biz.event.handler.chain.HandlerChain;
 import org.apache.rocketmq.client.biz.event.handler.chain.HandlerChainResolver;
 import org.apache.rocketmq.client.biz.exception.EventHandleException;
 
+/**
+ * Abstract handler that resolves and executes a {@link HandlerChain} via a
+ * {@link HandlerChainResolver}, allowing path-based handler chain routing.
+ *
+ * @param <T> the concrete event type
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see AbstractEnabledMessageHandler
+ * @see HandlerChainResolver
+ */
 public class AbstractRouteableMessageHandler<T extends RocketmqEvent> extends AbstractEnabledMessageHandler<T> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(AbstractRouteableMessageHandler.class);

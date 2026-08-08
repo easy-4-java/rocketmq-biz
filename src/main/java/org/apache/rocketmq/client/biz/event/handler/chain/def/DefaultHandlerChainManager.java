@@ -17,6 +17,15 @@ import org.apache.rocketmq.client.biz.event.handler.chain.HandlerChain;
 import org.apache.rocketmq.client.biz.event.handler.chain.HandlerChainManager;
 import org.apache.rocketmq.client.biz.util.StringUtils;
 
+/**
+ * Default {@link HandlerChainManager} backed by in-memory maps of named handlers
+ * and handler chain definitions.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see HandlerChainManager
+ * @see DefaultNamedHandlerList
+ */
 public class DefaultHandlerChainManager implements HandlerChainManager<RocketmqEvent> {
 	
 	private static transient final Logger log = LoggerFactory.getLogger(DefaultHandlerChainManager.class);

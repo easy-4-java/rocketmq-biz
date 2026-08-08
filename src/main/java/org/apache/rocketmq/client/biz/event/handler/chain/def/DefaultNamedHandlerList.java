@@ -14,6 +14,17 @@ import org.apache.rocketmq.client.biz.event.handler.NamedHandlerList;
 import org.apache.rocketmq.client.biz.event.handler.chain.HandlerChain;
 import org.apache.rocketmq.client.biz.event.handler.chain.ProxiedHandlerChain;
 
+/**
+ * Default {@link NamedHandlerList} backed by an {@link ArrayList}.
+ *
+ * <p>Delegates all {@link List} operations to the backing list and produces
+ * {@link ProxiedHandlerChain} instances via {@link #proxy(HandlerChain)}.</p>
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see NamedHandlerList
+ * @see ProxiedHandlerChain
+ */
 public class DefaultNamedHandlerList implements NamedHandlerList<RocketmqEvent> {
 
 	private String name;
