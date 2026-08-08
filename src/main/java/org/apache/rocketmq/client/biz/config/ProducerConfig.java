@@ -5,6 +5,18 @@ import org.apache.rocketmq.client.ClientConfig;
 import org.apache.rocketmq.client.producer.TransactionCheckListener;
 import org.apache.rocketmq.common.MixAll;
 
+/**
+ * Configuration POJO for a RocketMQ producer.
+ *
+ * <p>Encapsulates producer-specific settings such as producer group, send timeout,
+ * retry policies, message size limits, and transactional message configuration.
+ * Extends {@link ClientConfig} for common client settings like name-server address.</p>
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see org.apache.rocketmq.client.ClientConfig
+ * @see org.apache.rocketmq.client.producer.DefaultMQProducer
+ */
 public class ProducerConfig extends ClientConfig {
 
 	/**

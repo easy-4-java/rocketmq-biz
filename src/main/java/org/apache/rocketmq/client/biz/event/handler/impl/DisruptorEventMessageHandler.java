@@ -11,6 +11,16 @@ import org.apache.rocketmq.client.biz.disruptor.RocketmqDataEventTranslator;
 import org.apache.rocketmq.client.biz.event.RocketmqDisruptorEvent;
 import org.apache.rocketmq.client.biz.event.handler.MessageHandler;
 
+/**
+ * {@link MessageHandler} that publishes consumed messages into a LMAX Disruptor
+ * ring buffer for high-throughput asynchronous processing.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see MessageHandler
+ * @see com.lmax.disruptor.dsl.Disruptor
+ * @see RocketmqDataEventTranslator
+ */
 public class DisruptorEventMessageHandler implements MessageHandler, InitializingBean {
 
 	private static final Logger LOG = LoggerFactory.getLogger(DisruptorEventMessageHandler.class);

@@ -24,6 +24,20 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.util.CollectionUtils;
 
 
+/**
+ * Spring {@link FactoryBean} that creates and configures a RocketMQ {@link MQPushConsumer}.
+ *
+ * <p>Subscribes to topics defined in the {@link ConsumerConfig}, registers the
+ * provided {@link MessageListenerConcurrently}, and starts the consumer with a
+ * short delay to allow Spring event listeners to initialize first.
+ * Registers a JVM shutdown hook for graceful resource cleanup.</p>
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see org.springframework.beans.factory.FactoryBean
+ * @see ConsumerConfig
+ * @see DefaultMQPushConsumer
+ */
 public class MQPushConsumerFactoryBean implements FactoryBean<MQPushConsumer>, InitializingBean  {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(MQPushConsumerFactoryBean.class);

@@ -16,6 +16,16 @@ import org.apache.rocketmq.client.biz.event.handler.chain.def.DefaultHandlerChai
 import org.apache.rocketmq.client.biz.event.handler.chain.def.PathMatchingHandlerChainResolver;
 import org.apache.rocketmq.client.biz.event.handler.impl.RocketmqEventMessageHandler;
 
+/**
+ * Spring {@link FactoryBean} that creates a fully configured {@link AbstractRouteableMessageHandler}
+ * with handler chain definitions parsed from INI-style configuration.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 3.0.0
+ * @see org.springframework.beans.factory.FactoryBean
+ * @see RocketmqEventMessageHandler
+ * @see PathMatchingHandlerChainResolver
+ */
 public class MQEventHandlerFactoryBean implements FactoryBean<EventHandler<RocketmqEvent>> {
 
 	/**
