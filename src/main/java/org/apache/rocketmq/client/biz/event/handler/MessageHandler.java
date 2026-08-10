@@ -6,7 +6,7 @@ import org.apache.rocketmq.common.message.MessageExt;
 /**
  * Contract for handling a raw RocketMQ message consumed by a push consumer.
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see org.apache.rocketmq.common.message.MessageExt
  */

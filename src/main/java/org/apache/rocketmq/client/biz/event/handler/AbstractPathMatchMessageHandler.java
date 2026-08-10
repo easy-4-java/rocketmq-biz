@@ -15,7 +15,7 @@ import org.apache.rocketmq.client.biz.event.RocketmqEvent;
  * Ant-style path patterns before delegating to subclass logic.
  *
  * @param <T> the concrete event type
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see AbstractAdviceMessageHandler
  * @see PathProcessor

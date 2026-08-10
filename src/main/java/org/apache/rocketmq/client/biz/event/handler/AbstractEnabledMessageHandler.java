@@ -12,7 +12,7 @@ import org.apache.rocketmq.client.biz.event.handler.chain.HandlerChain;
  * <p>When disabled, the handler simply passes the event to the next handler in the chain.</p>
  *
  * @param <T> the concrete event type
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see AbstractNameableMessageHandler
  * @see EventHandler

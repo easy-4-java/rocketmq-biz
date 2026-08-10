@@ -12,7 +12,7 @@ import org.apache.rocketmq.common.MixAll;
  * retry policies, message size limits, and transactional message configuration.
  * Extends {@link ClientConfig} for common client settings like name-server address.</p>
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see org.apache.rocketmq.client.ClientConfig
  * @see org.apache.rocketmq.client.producer.DefaultMQProducer

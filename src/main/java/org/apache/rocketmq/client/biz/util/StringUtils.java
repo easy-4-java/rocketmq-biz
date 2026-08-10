@@ -25,7 +25,7 @@ import org.springframework.util.ObjectUtils;
  * Extended string utility class that combines Apache Commons Lang {@code StringUtils}
  * with Spring-style path, locale, and collection helpers.
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see org.apache.commons.lang3.StringUtils
  */

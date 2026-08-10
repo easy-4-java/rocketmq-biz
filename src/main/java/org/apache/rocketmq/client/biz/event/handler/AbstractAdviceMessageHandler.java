@@ -11,7 +11,7 @@ import org.apache.rocketmq.client.biz.event.handler.chain.HandlerChain;
  * advice lifecycle, similar to Spring's {@code HandlerInterceptor} pattern.
  *
  * @param <T> the concrete event type
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see AbstractEnabledMessageHandler
  * @see EventHandler

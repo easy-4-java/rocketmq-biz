@@ -20,7 +20,7 @@ import org.apache.rocketmq.client.biz.event.handler.impl.RocketmqEventMessageHan
  * Spring {@link FactoryBean} that creates a fully configured {@link AbstractRouteableMessageHandler}
  * with handler chain definitions parsed from INI-style configuration.
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see org.springframework.beans.factory.FactoryBean
  * @see RocketmqEventMessageHandler

@@ -16,7 +16,7 @@ import org.apache.rocketmq.client.biz.event.handler.chain.ProxiedHandlerChain;
  * {@link MessageHandler} that converts a consumed message into a {@link RocketmqEvent}
  * and processes it through a resolved {@link HandlerChain}.
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see AbstractRouteableMessageHandler
  * @see MessageHandler

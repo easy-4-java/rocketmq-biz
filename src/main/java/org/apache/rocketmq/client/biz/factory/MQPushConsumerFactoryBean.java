@@ -32,7 +32,7 @@ import org.springframework.util.CollectionUtils;
  * short delay to allow Spring event listeners to initialize first.
  * Registers a JVM shutdown hook for graceful resource cleanup.</p>
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see org.springframework.beans.factory.FactoryBean
  * @see ConsumerConfig

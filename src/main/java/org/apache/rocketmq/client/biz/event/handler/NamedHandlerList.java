@@ -10,7 +10,7 @@ import org.apache.rocketmq.client.biz.event.handler.chain.HandlerChain;
  * A named, ordered list of {@link EventHandler}s that can produce a proxied {@link HandlerChain}.
  *
  * @param <T> the concrete event type
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see EventHandler
  * @see HandlerChain

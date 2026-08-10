@@ -25,7 +25,7 @@ import org.apache.rocketmq.client.biz.util.StringUtils;
  * {@link Scanner}s. Each section is a {@code Map<String, String>} of key-value pairs.
  * Lines starting with {@code #} or {@code ;} are treated as comments.</p>
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see Ini.Section
  */

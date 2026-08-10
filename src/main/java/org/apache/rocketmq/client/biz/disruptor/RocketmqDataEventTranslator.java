@@ -10,7 +10,7 @@ import org.apache.rocketmq.client.biz.event.RocketmqDisruptorEvent;
  * Disruptor {@link EventTranslatorOneArg} that populates a {@link RocketmqDisruptorEvent}
  * from a consumed {@link MessageExt}.
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see com.lmax.disruptor.EventTranslatorOneArg
  * @see RocketmqDisruptorEvent

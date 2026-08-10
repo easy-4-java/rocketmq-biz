@@ -21,7 +21,7 @@ import org.apache.rocketmq.client.biz.util.StringUtils;
  * Default {@link HandlerChainManager} backed by in-memory maps of named handlers
  * and handler chain definitions.
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see HandlerChainManager
  * @see DefaultNamedHandlerList

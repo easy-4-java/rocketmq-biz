@@ -10,7 +10,7 @@ import org.apache.rocketmq.common.message.MessageExt;
  * <p>This is a no-op implementation suitable for applications that do not require
  * transactional message back-checking. Override or replace for custom logic.</p>
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see org.apache.rocketmq.client.producer.TransactionCheckListener
  */

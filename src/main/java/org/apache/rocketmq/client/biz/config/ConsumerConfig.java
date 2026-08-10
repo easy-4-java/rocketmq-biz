@@ -13,7 +13,7 @@ import org.apache.rocketmq.common.UtilAll;
  * consumption offset strategy, thread pool sizes, and subscription mappings.
  * Extends {@link ClientConfig} for common client settings like name-server address.</p>
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see org.apache.rocketmq.client.ClientConfig
  * @see org.apache.rocketmq.client.consumer.DefaultMQPushConsumer

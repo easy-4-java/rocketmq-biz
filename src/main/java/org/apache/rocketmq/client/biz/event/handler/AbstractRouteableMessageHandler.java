@@ -15,7 +15,7 @@ import org.apache.rocketmq.client.biz.exception.EventHandleException;
  * {@link HandlerChainResolver}, allowing path-based handler chain routing.
  *
  * @param <T> the concrete event type
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see AbstractEnabledMessageHandler
  * @see HandlerChainResolver

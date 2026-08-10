@@ -15,7 +15,7 @@ import org.apache.rocketmq.client.biz.event.handler.chain.HandlerChainResolver;
  * registered path patterns (using Spring's {@link PathMatcher}) to select
  * the appropriate handler chain.
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see HandlerChainResolver
  * @see HandlerChainManager

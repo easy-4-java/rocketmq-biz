@@ -20,7 +20,7 @@ import org.apache.rocketmq.client.biz.event.handler.chain.ProxiedHandlerChain;
  * <p>Delegates all {@link List} operations to the backing list and produces
  * {@link ProxiedHandlerChain} instances via {@link #proxy(HandlerChain)}.</p>
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see NamedHandlerList
  * @see ProxiedHandlerChain

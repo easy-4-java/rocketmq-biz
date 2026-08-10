@@ -5,7 +5,7 @@ import org.apache.rocketmq.client.producer.MQProducer;
 /**
  * JVM shutdown hook that gracefully shuts down a RocketMQ {@link MQProducer}.
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see org.apache.rocketmq.client.producer.MQProducer
  */

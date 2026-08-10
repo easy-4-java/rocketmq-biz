@@ -15,7 +15,7 @@ import org.apache.rocketmq.client.biz.event.handler.EventHandler;
  * <p>Maintains a cursor position so each handler in the list is invoked in order
  * before delegating to the original chain.</p>
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see HandlerChain
  * @see EventHandler

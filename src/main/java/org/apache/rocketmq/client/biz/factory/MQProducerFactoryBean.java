@@ -25,7 +25,7 @@ import org.apache.rocketmq.client.biz.listener.DefaultTransactionCheckListener;
  * ({@link TransactionMQProducer}) producers based on the {@link ProducerConfig}.
  * Registers a JVM shutdown hook for graceful resource cleanup.</p>
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see org.springframework.beans.factory.FactoryBean
  * @see ProducerConfig

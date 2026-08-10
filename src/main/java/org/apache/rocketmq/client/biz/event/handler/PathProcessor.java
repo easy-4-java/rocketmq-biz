@@ -6,7 +6,7 @@ import org.apache.rocketmq.client.biz.event.RocketmqEvent;
  * Contract for associating a path pattern with an {@link EventHandler}.
  *
  * @param <T> the concrete event type
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see EventHandler
  */

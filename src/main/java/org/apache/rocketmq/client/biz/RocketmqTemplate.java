@@ -31,7 +31,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * API for synchronous, asynchronous, one-way, batch, and transactional message
  * sending, as well as consumer listener registration.</p>
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see org.apache.rocketmq.client.producer.MQProducer
  * @see org.apache.rocketmq.client.consumer.MQPushConsumer

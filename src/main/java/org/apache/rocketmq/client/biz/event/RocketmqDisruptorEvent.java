@@ -15,7 +15,7 @@ import org.apache.rocketmq.client.biz.util.StringUtils;
  * downstream processing. Builds a route expression from the message metadata
  * if none is explicitly set.</p>
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see com.lmax.disruptor.biz.event.DisruptorEvent
  * @see org.apache.rocketmq.common.message.MessageExt

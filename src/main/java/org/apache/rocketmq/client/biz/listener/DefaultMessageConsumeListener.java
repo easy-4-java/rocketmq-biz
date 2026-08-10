@@ -19,7 +19,7 @@ import org.apache.rocketmq.client.biz.event.handler.MessageHandler;
  * <p>If the handler returns {@code false} or throws an exception, the message is
  * re-consumed up to the number of times specified by {@link ConsumerConfig#getRetryTimesWhenConsumeFailed()}.</p>
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see MessageHandler
  * @see ConsumerConfig

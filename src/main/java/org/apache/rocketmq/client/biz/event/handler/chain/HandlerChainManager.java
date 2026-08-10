@@ -11,7 +11,7 @@ import org.apache.rocketmq.client.biz.event.handler.NamedHandlerList;
  * Manager responsible for creating, maintaining, and resolving handler chains.
  *
  * @param <T> the concrete event type
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see HandlerChain
  * @see EventHandler

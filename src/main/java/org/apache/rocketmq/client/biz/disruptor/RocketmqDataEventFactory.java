@@ -8,7 +8,7 @@ import org.apache.rocketmq.client.biz.event.RocketmqDisruptorEvent;
  *
  * <p>Used to pre-populate the Disruptor ring buffer with event objects.</p>
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see com.lmax.disruptor.EventFactory
  * @see RocketmqDisruptorEvent

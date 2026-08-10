@@ -15,7 +15,7 @@ import org.apache.rocketmq.client.biz.event.handler.MessageHandler;
  * {@link MessageHandler} that publishes consumed messages into a LMAX Disruptor
  * ring buffer for high-throughput asynchronous processing.
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 3.0.0
  * @see MessageHandler
  * @see com.lmax.disruptor.dsl.Disruptor
