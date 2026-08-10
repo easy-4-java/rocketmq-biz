@@ -298,25 +298,25 @@
 
     <!-- 版本属性定义：Java 版本、依赖版本与 Maven 插件版本统一管理 -->
     <properties>
-        <maven-central-publishing-plugin.version>0.11.0</maven-central-publishing-plugin.version>
-        <!-- Maven Plugin versions -->
-        <maven-javadoc-plugin.version>3.11.2</maven-javadoc-plugin.version>
-        <maven-source-plugin.version>3.4.0</maven-source-plugin.version>
-        <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
-        <!-- Dependency versions -->
-        <lombok.version>1.18.46</lombok.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <junit.version>4.13.2</junit.version>
-        <junit-jupiter.version>5.11.4</junit-jupiter.version>
-        <servlet-api.version>3.0.1</servlet-api.version>
-        <slf4j.version>2.0.18</slf4j.version>
-        <disruptor-biz.version>1.0.x.20260630-SNAPSHOT</disruptor-biz.version>
-        <rocketmq.version>4.5.2</rocketmq.version>
-        <spring.version>4.3.11.RELEASE</spring.version>
-        <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
-        <maven-jacoco-plugin.version>0.8.15</maven-jacoco-plugin.version>
+            <java.version>1.8</java.version>
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+            <!-- Dependency versions -->
+            <disruptor-biz.version>1.0.x.20260630-SNAPSHOT</disruptor-biz.version>
+            <junit-jupiter.version>5.11.4</junit-jupiter.version>
+            <junit.version>4.13.2</junit.version>
+            <lombok.version>1.18.46</lombok.version>
+            <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+            <rocketmq.version>4.5.2</rocketmq.version>
+            <servlet-api.version>3.0.1</servlet-api.version>
+            <slf4j.version>2.0.18</slf4j.version>
+            <spring.version>4.3.11.RELEASE</spring.version>
+            <!-- Maven Plugin versions -->
+            <maven-central-publishing-plugin.version>0.11.0</maven-central-publishing-plugin.version>
+            <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
+            <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
+            <maven-jacoco-plugin.version>0.8.15</maven-jacoco-plugin.version>
+            <maven-javadoc-plugin.version>3.11.2</maven-javadoc-plugin.version>
+            <maven-source-plugin.version>3.4.0</maven-source-plugin.version>
     </properties>
 
     <!-- 依赖版本统一管理（dependencyManagement） -->
