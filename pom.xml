@@ -41,7 +41,6 @@
         <maven.version>3.9.16</maven.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
         <!-- ═══ Dependency versions（自然排序）═══ -->
         <disruptor-biz.version>1.0.x.20260630-SNAPSHOT</disruptor-biz.version>
         <junit-jupiter.version>5.11.4</junit-jupiter.version>
@@ -51,7 +50,6 @@
         <servlet-api.version>3.0.1</servlet-api.version>
         <slf4j.version>2.0.18</slf4j.version>
         <spring.version>4.3.11.RELEASE</spring.version>
-
         <!-- ═══ Maven Plugin versions（自然排序）═══ -->
         <maven-central-publishing-plugin.version>0.11.0</maven-central-publishing-plugin.version>
         <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
@@ -59,7 +57,6 @@
         <maven-jacoco-plugin.version>0.8.15</maven-jacoco-plugin.version>
         <maven-javadoc-plugin.version>3.11.2</maven-javadoc-plugin.version>
         <maven-source-plugin.version>3.4.0</maven-source-plugin.version>
-    
     </properties>
     <dependencyManagement>
         <dependencies>
